@@ -18,7 +18,7 @@ function wowprogress_render_form() {
 		
 		<!-- Display Plugin Icon, Header, and Description -->
 		<div class="icon32" id="icon-options-general"><br></div>
-		<h2><?= WOWPROGRESS_PLUGIN_NAME . " " . __('Settings', 'wowprogress') ?></h2>
+		<h2><?php echo WOWPROGRESS_PLUGIN_NAME . " " . __('Settings', 'wowprogress') ?></h2>
 
 		<!-- Beginning of the Plugin Options Form -->
 		<form method="post" action="options.php">
@@ -30,10 +30,10 @@ function wowprogress_render_form() {
 			<table class="form-table">
 
 				<tr>
-					<th scope="row"><? _e('Theme', 'wowprogress') ?></th>
+					<th scope="row"><?php _e('Theme', 'wowprogress') ?></th>
 					<td>
 						<select name='wowprogress_options[theme]'>
-							<? foreach(wow_progress_themes() as $theme){
+							<?php foreach(wow_progress_themes() as $theme){
 							echo "<option value='$theme' " . selected($theme, $options['theme']) . ">$theme</option>";
 							}?>
 						</select>
@@ -41,7 +41,7 @@ function wowprogress_render_form() {
 				</tr>
 
 				<tr valign="top">
-					<th scope="row"><? _e('Show Backgrounds', 'wowprogress') ?></th>
+					<th scope="row"><?php _e('Show Backgrounds', 'wowprogress') ?></th>
 					<td>
 						<input name="wowprogress_options[show_backgrounds]" type="checkbox" value="1" <?php if (isset($options['show_backgrounds'])) { checked('1', $options['show_backgrounds']); } ?> />
 					</td>
