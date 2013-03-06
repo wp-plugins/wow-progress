@@ -23,7 +23,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
-define( 'WOWPROGRESS_VERSION', '1.0.1' );
+define( 'WOWPROGRESS_VERSION', '1.0.2' );
 if ( ! defined( 'WOWPROGRESS_PLUGIN_SLUG' ) )	define( 'WOWPROGRESS_PLUGIN_SLUG',	'wowprogress');
 if ( ! defined( 'WOWPROGRESS_PLUGIN_NAME' ) )	define( 'WOWPROGRESS_PLUGIN_NAME',	'WoW Progress');
 if ( ! defined( 'WOWPROGRESS_PLUGIN_DIR' ) )	define( 'WOWPROGRESS_PLUGIN_DIR',	WP_PLUGIN_DIR . '/' . plugin_basename( dirname( __FILE__ ) ) );

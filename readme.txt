@@ -3,7 +3,7 @@ Contributors: martinek
 Tags: wow, warcraft, world of warcraft, guild, progress, widget, raid, boss
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ A widget that helps to display guild raid progress.
 == Description ==
 
 A widget that helps to display guild raid progress.
-Each boss have separate option to toggle kill and heroic kill. Contains raids from Tier 11 up to Tier 14. Each raid can be toggled to be displayed and if shown or collapsed.
+Each boss have separate option to toggle kill and heroic kill. Contains raids from Tier 11 up to Tier 15 (patch 5.2). Each raid can be toggled to be displayed and if shown or collapsed.
 
 There is theme support with sample Light and Dark theme. Also my own theme is attached if you are interested. You should create your own theme and customise it to match your needs. 
 
@@ -45,6 +45,9 @@ You can either replace image of raid in `/images/raids/` folder, or you can uplo
 4. Administration
 
 == Changelog ==
+
+= 1.0.2 =
+* added Throne of Thunder raid (patch 5.2)
 
 = 1.0.1 =
 * added long codes for PHP in plugin Settings

@@ -1,14 +1,36 @@
 [
 	{
+		"achievement" : 8140,
+		"background" : "tot",
+		"bosses" : [
+			"Jin&#39;rokh the Breaker",
+			"Horridon",
+			"Council of Elders",
+			"Tortos",
+			"Megaera",
+			"Ji-Kun",
+			"Durumu the Forgotten",
+			"Primordius",
+			"Dark Animus",
+			"Iron Qon",
+			"Twin Consorts",
+			"Lei Shen",
+			"Ra-den"
+		],
+		"exp" : "mists_of_pandaria",
+		"name" : "Throne of Thunder",
+		"tag" : "tot"
+	},
+	{
 		"achievement" : 6668,
 		"background" : "mv",
 		"bosses" : [
 			"The Stone Guard",
 			"Feng the Accursed",
 			"Gara&#39;jal the Spiritbinde",
-			"Zian of the Endless Shadow",
+			"The Spirit Kings",
 			"Elegon",
-			"Qin-xi"
+			"Will of the Emperor"
 		],
 		"exp" : "mists_of_pandaria",
 		"name" : "Mogu&#39;shan Vaults",
