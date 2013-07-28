@@ -2,8 +2,8 @@
 Contributors: martinek
 Tags: wow, warcraft, world of warcraft, guild, progress, widget, raid, boss
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 1.1.0
+Tested up to: 3.5.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ You can either replace image of raid in `/images/raids/` folder, or you can uplo
 4. Administration
 
 == Changelog ==
+
+= 1.2.0 =
+* added Siege of Orgrimmar raid (patch 5.4)
 
 = 1.1.0 =
 * bumped up version to fix problem with incorrect version

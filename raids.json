@@ -1,4 +1,27 @@
 [
+    {
+        "achievement" : 8510,
+        "background" : "soo",
+        "bosses" : [
+            "Immerseus",
+            "Amalgam of Corruption",
+            "Galakras",
+            "Earthbreaker Haromm",
+            "Malkorok",
+            "Thok the Bloodthirsty",
+            "Kil&#39;ruk the Wind-Reaver",
+            "He Softfoot",
+            "Sha of Pride",
+            "Iron Juggernaut",
+            "General Nazgrim",
+            "Spoils of Pandaria",
+            "Siegecrafter Blackfuse",
+            "Garrosh Hellscream"
+        ],
+        "exp" : "mists_of_pandaria",
+        "name" : "Siege of Orgrimmar",
+        "tag" : "soo"
+    },
 	{
 		"achievement" : 8140,
 		"background" : "tot",
