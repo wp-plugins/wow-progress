@@ -12,7 +12,7 @@ A widget that helps to display guild raid progress.
 == Description ==
 
 A widget that helps to display guild raid progress.
-Each boss have separate option to toggle kill and heroic kill. Contains raids from Tier 11 up to Tier 15 (patch 5.2). Each raid can be toggled to be displayed and if shown or collapsed.
+Each boss have separate option to toggle kill and heroic kill. Contains raids from Tier 11 up to Tier 16 (patch 5.4). Each raid can be toggled to be displayed and if shown or collapsed.
 
 There is theme support with sample Light and Dark theme. Also my own theme is attached if you are interested. You should create your own theme and customise it to match your needs. 
 
