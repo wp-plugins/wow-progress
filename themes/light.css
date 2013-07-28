@@ -1,0 +1,15 @@
+#wowprogress .raid_film{
+	background-color: rgba(255,255,255,0.8);
+}
+
+#wowprogress .raid_head {
+	color: #222222;
+}
+
+#wowprogress .raid_head a{
+	color: #222222;
+}
+
+#wowprogress .down {
+	color: #40BF40 !important;
+}
