@@ -3,7 +3,7 @@
  * Plugin Name: WoW Progress
  * Description: A widget that helps to display guild raid progress.
  * Author: freevision.sk
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author URI: http://www.freevision.sk
  * Text Domain: wowprogress
  */
