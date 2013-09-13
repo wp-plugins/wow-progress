@@ -47,7 +47,7 @@ You can either replace image of raid in `/images/raids/` folder, or you can uplo
 == Changelog ==
 
 = 1.2.1 =
-* fixed names of bosses in Siege of Orgrimmar
+* fixed names and order of bosses in Siege of Orgrimmar
 
 = 1.2.0 =
 * added Siege of Orgrimmar raid (patch 5.4)
