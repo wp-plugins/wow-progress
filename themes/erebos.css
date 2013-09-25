@@ -1,0 +1,21 @@
+#wowprogress .raid_film{
+	background-color: rgba(0,0,0,0.7);
+	padding: 0px 3px;
+}
+
+#wowprogress .raid {
+	color: #ffffff;
+}
+
+#wowprogress .raid_head {
+	font-weight: bold;
+}
+
+#wowprogress .raid ul {
+	border-top: 1px dotted #878686;
+	font-weight: normal;
+}
+
+#wowprogress .down {
+	color: #1EFF00;
+}

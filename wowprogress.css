@@ -1,0 +1,65 @@
+#wowprogress ul {
+	margin-left: 0px !important;
+	list-style: none;
+	font-weight: bold;
+}
+
+/* poitner to indicate clickability*/
+#wowprogress .expansion_head, 
+#wowprogress .raid_head{
+	cursor: pointer;
+}
+
+#wowprogress .expansion_head{
+	text-align: center;
+}
+
+#wowprogress .expansion_head img{
+	width: 170px;
+}
+
+#wowprogress .raid {
+	background-position: top center;
+	margin-bottom: 8px;
+}
+
+#wowprogress .raid_film{
+	background-color: rgba(255,255,255,0.8);
+	margin: 0px 0px;
+	padding: 3px 3px;
+}
+
+#wowprogress .raid_head {
+	text-align: left;
+	font-weight: bold;
+}
+
+#wowprogress .raid_head a{
+}
+
+#wowprogress .raid ul {
+	border-top: 1px dotted #000000;
+}
+
+#wowprogress .down {
+}
+
+#wowprogress .video_link {
+    float: right;
+}
+
+#wowprogress .video_link img{
+    border: 0;
+    box-shadow: none;
+    vertical-align: middle;
+}
+
+#wowprogress .hc {
+	background-image: url('images/heroic_icon.png');
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+#wowprogress .hc .video_link {
+    margin-right: 18px;
+}
