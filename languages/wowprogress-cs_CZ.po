@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wowprogress 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-13 18:20+0100\n"
+"POT-Creation-Date: 2013-09-25 13:07+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: martinek <martinek@freevision.sk>\n"
+"Last-Translator: Valter Martinek <martinek@freevision.sk>\n"
 "Language-Team: freevision.sk <info@freevision.sk>\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
@@ -12,19 +12,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Generator: Poedit 1.5.3\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ./inc\n"
 
-#: wowprogress.php:180
+#: wowprogress.php:191
 msgid "Title"
 msgstr "Titulka"
 
-#: wowprogress.php:181
+#: wowprogress.php:192
 msgid "Guild"
 msgstr "Guilda"
 
-#: wowprogress.php:181
+#: wowprogress.php:192
 msgid ""
 "Name of your guild.\n"
 "This will be used in achievement link."
@@ -32,25 +32,29 @@ msgstr ""
 "Jméno vaší guildy.\n"
 "Bude použito v odkazu na achievement."
 
-#: wowprogress.php:189
+#: wowprogress.php:202
 msgid "Show"
 msgstr "Zobrazit"
 
-#: wowprogress.php:190
+#: wowprogress.php:203
 msgid "Open"
 msgstr "Otevřené"
 
-#: wowprogress.php:199
+#: wowprogress.php:212
 msgid "Time"
 msgstr "Čas"
 
-#: wowprogress.php:199
+#: wowprogress.php:212
 msgid ""
 "Time when guild achieved guild run achievement.\n"
 "Should be in unix micro time (ei. 1304035200000)."
 msgstr ""
 "Čas kdy vaše guilda získala tento achievement.\n"
 "Mal by být ve formátu unix micro time (např. 1304035200000)."
+
+#: wowprogress.php:269
+msgid "URL to video."
+msgstr "URL videa."
 
 #: inc/admin.php:10 inc/admin.php:21
 msgid "Settings"
@@ -64,6 +68,10 @@ msgstr "Téma"
 msgid "Show Backgrounds"
 msgstr "Zobrazit pozadí"
 
-#: inc/admin.php:52
+#: inc/admin.php:54
+msgid "Enabled Raids"
+msgstr "Zapnuté raidy"
+
+#: inc/admin.php:65
 msgid "Save Changes"
 msgstr "Uložit nastavení"

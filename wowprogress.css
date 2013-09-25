@@ -44,8 +44,22 @@
 #wowprogress .down {
 }
 
+#wowprogress .video_link {
+    float: right;
+}
+
+#wowprogress .video_link img{
+    border: 0;
+    box-shadow: none;
+    vertical-align: middle;
+}
+
 #wowprogress .hc {
 	background-image: url('images/heroic_icon.png');
 	background-repeat: no-repeat;
-	background-position: top right;
+	background-position: center right;
+}
+
+#wowprogress .hc .video_link {
+    margin-right: 18px;
 }

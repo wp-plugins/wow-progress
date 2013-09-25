@@ -47,7 +47,20 @@ function wowprogress_render_form() {
 					</td>
 				</tr>
 
-			</table>
+                <?php
+                    $availableRaids = wowprogress_widget::load_raids_file(WOWPROGRESS_RAIDS_FILE);
+                ?>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Enabled Raids', 'wowprogress') ?></th>
+                    <td>
+                        <?php foreach($availableRaids as $raid){ ?>
+                            <input type="checkbox" name="wowprogress_options[show_raid][<?php echo $raid['tag'];?>]" value="1" <?php if (isset($options['show_raid'][$raid['tag']])) { checked('1', $options['show_raid'][$raid['tag']]); } ?>/>
+                            <?php echo $raid['name']?><br />
+                        <?php } ?>
+                    </td>
+                </tr>
+
+            </table>
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e('Save Changes', 'wowprogress') ?>" />
 			</p>

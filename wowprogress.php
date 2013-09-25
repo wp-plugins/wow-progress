@@ -35,6 +35,7 @@ if ( ! defined( 'WOWPROGRESS_RAIDS_FILE' ) )	define( 'WOWPROGRESS_RAIDS_FILE',	W
 if ( ! defined( 'WOWPROGRESS_EXPANSIONS' ) )	define( 'WOWPROGRESS_EXPANSIONS',	WOWPROGRESS_PLUGIN_URL.'/images/exp/%s.png' );
 if ( ! defined( 'WOWPROGRESS_RAIDS' ) )			define( 'WOWPROGRESS_RAIDS',		WOWPROGRESS_PLUGIN_URL.'/images/raids/%s.png' );
 if ( ! defined( 'WOWPROGRESS_HC_ICON' ) )		define( 'WOWPROGRESS_HC_ICON',		WOWPROGRESS_PLUGIN_URL.'/images/heroic_icon.png' );
+if ( ! defined( 'WOWPROGRESS_VIDEO_ICON' ) )	define( 'WOWPROGRESS_VIDEO_ICON',	WOWPROGRESS_PLUGIN_URL.'/images/video_icon.png' );
 if ( ! defined( 'WOWPROGRESS_ACHI' ) )			define( 'WOWPROGRESS_ACHI',			'<a href="http://www.wowhead.com/achievement=%d?who=%s&when=%d">%s</a>' );
 
 $nice_code = false;
@@ -54,7 +55,7 @@ class wowprogress_widget extends WP_Widget {
 	function wowprogress_widget(){
 		$widget_ops = array('classname' => WOWPROGRESS_PLUGIN_SLUG, 'description' => 'WoW Progress Widget' );
 		parent::WP_Widget(false, $name = 'WoW Progress', $widget_ops);
-		$this->WoWraids = $this->load_raids_file(WOWPROGRESS_PLUGIN_DIR . "/raids.json");
+		$this->WoWraids = $this->load_raids_file(WOWPROGRESS_RAIDS_FILE);
 	}
 
 	function widget($args, $instance){
@@ -71,6 +72,8 @@ class wowprogress_widget extends WP_Widget {
 
 		$exp = "";
 		foreach ($this->WoWraids as $raid) {
+            // Skip if raid is disabled in settings
+            if(!isset($options['show_raid'][$raid['tag']]) || $options['show_raid'][$raid['tag']] != '1') continue;
 			// Skip if raid is not shown
 			if(!$instance[$raid['tag']."_show"]) continue;
 
@@ -118,8 +121,14 @@ class wowprogress_widget extends WP_Widget {
 			echo TAB.TAB.TAB.TAB.'<ul'.($instance[$raid['tag']."_expand"] ? "" : ' style="display: none"') . '>'.NL;
 
 			// Output each boss
-			foreach($raid['bosses'] as $bossid => $boss)
-				echo TAB.TAB.TAB.TAB.TAB.'<li'.($instance[$raid['tag']."_".$bossid] == "on" ? ($instance[$raid['tag']."_".$bossid."_hc"] == "on" ? ' class="down hc"' : ' class="down"') : "").'>'.$boss.'</li>'.NL;
+			foreach($raid['bosses'] as $bossid => $boss){
+                echo TAB.TAB.TAB.TAB.TAB.'<li'.($instance[$raid['tag']."_".$bossid] == "on" ? ($instance[$raid['tag']."_".$bossid."_hc"] == "on" ? ' class="down hc"' : ' class="down"') : "").'>';
+                echo $boss;
+                if($instance[$raid['tag']."_".$bossid."_vid"] != ""){
+                    echo '<a class="video_link" href="'.$instance[$raid['tag']."_".$bossid."_vid"].'"><img src="'.WOWPROGRESS_VIDEO_ICON.'" /></a>';
+                }
+                echo '</li>'.NL;
+            }
 
 			// End boss list
 			echo TAB.TAB.TAB.TAB.'</ul>'.NL;
@@ -152,8 +161,9 @@ class wowprogress_widget extends WP_Widget {
 			$instance[$raid['tag']."_expand"] = $new_instance[$raid['tag']."_expand"];
 
 			foreach ($raid['bosses'] as $boss_id => $bossname) {
-				$instance[$raid['tag']."_".$boss_id]       = $new_instance[$raid['tag'].'_'.$boss_id];
-				$instance[$raid['tag']."_".$boss_id."_hc"] = $new_instance[$raid['tag']."_".$boss_id."_hc"];
+				$instance[$raid['tag']."_".$boss_id]        = $new_instance[$raid['tag'].'_'.$boss_id];
+				$instance[$raid['tag']."_".$boss_id."_hc"]  = $new_instance[$raid['tag']."_".$boss_id."_hc"];
+                $instance[$raid['tag']."_".$boss_id."_vid"] = $new_instance[$raid['tag'].'_'.$boss_id."_vid"];
 			}
 		}
 
@@ -167,11 +177,13 @@ class wowprogress_widget extends WP_Widget {
 			)
 		);
 
-		echo $this->print_form_fields($instance);
+		$this->print_form_fields($instance);
 	}
 
 	function print_form_fields($instance){
-		echo '<table>';
+        $options = get_option(WOWPROGRESS_PLUGIN_SLUG.'_options');
+
+        echo '<table>';
 
 		echo '<thead><tr><th colspan="3"></th></tr></thead>';
 
@@ -182,6 +194,8 @@ class wowprogress_widget extends WP_Widget {
 		echo '</tbody>';
 
 		foreach ($this->WoWraids as $raid) {
+            if(!isset($options['show_raid'][$raid['tag']]) || $options['show_raid'][$raid['tag']] != '1') continue;
+
 			echo '<thead><tr><th colspan="3">'.$raid['name'].'</th></tr></thead>';
 
 			echo '<tbody>';
@@ -234,7 +248,16 @@ class wowprogress_widget extends WP_Widget {
 		return $res;
 	}
 
-	function form_boss($boss_id, $boss_name, $instance){
+    function form_link_input($id, $label, $value, $title = ""){
+        $res = "";
+        $res .= '<tr>';
+        $res .= '<td>'.$this->form_label($id, $label).'</td>';
+        $res .= '<td colspan="2">'.$this->form_text($id, $value, $title).'</td>';
+        $res .= '</tr>';
+        return $res;
+    }
+
+    function form_boss($boss_id, $boss_name, $instance){
 		$boss_id_hc = $boss_id."_hc";
 
 		$res = "";
@@ -243,7 +266,9 @@ class wowprogress_widget extends WP_Widget {
 		$res .= '<td>'.$this->form_checkbox($boss_id_hc, $instance[$boss_id_hc]).'</td>';
 		$res .= '<td>'.$this->form_label($boss_id, $boss_name).'</td>';
 		$res .= '</tr>';
-		return $res;
+        $res .= $this->form_link_input($boss_id.'_vid', '<img style="vertical-align: middle" src="'.WOWPROGRESS_VIDEO_ICON.'"/>', $instance[$boss_id."_vid"], __("URL to video.", "wowprogress"));
+
+        return $res;
 	}
 
 	function load_raids_file($path){
@@ -267,7 +292,11 @@ if (!function_exists('wowprogress_widget_install')) {
 			delete_option(WOWPROGRESS_PLUGIN_SLUG.'_options');
 			$arr = array(
 				"show_backgrounds" => "1",
-				"theme" => "light.css"
+				"theme" => "light.css",
+                "show_raid" => array(
+                    "soo" => "1",
+                    "tot" => "1"
+                )
 			);
 			update_option(WOWPROGRESS_PLUGIN_SLUG.'_options', $arr);
 		}
