@@ -63,3 +63,13 @@
 #wowprogress .hc .video_link {
     margin-right: 18px;
 }
+
+#wowprogress .myth {
+    background-image: url('images/mythic_icon.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+#wowprogress .myth .video_link {
+    margin-right: 18px;
+}

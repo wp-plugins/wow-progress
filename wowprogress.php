@@ -3,12 +3,12 @@
  * Plugin Name: WoW Progress
  * Description: A widget that helps to display guild raid progress.
  * Author: freevision.sk
- * Version: 1.3.0
+ * Version: 1.4.0
  * Author URI: http://www.freevision.sk
  * Text Domain: wowprogress
  */
 /**
- * Copyright (C) 2013  Montas, (Valter Martinek) (email : montas@freevision.sk)
+ * Copyright (C) 2014  Montas, (Valter Martinek) (email : montas@freevision.sk)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,16 +98,18 @@ class wowprogress_widget extends WP_Widget {
 			// Check if raid is complete
 			$complete = true;
 			$complete_hc = true;
+            $complete_myth = true;
 			foreach($raid['bosses'] as $bossid => $boss){
 				$complete &= $instance[$raid['tag']."_".$bossid] == "on";
 				$complete_hc &= $instance[$raid['tag']."_".$bossid."_hc"] == "on";
+                $complete_myth &= $instance[$raid['tag']."_".$bossid."_myth"] == "on";
 			}
 
 			// Background overlay for background image lightness correction
 			echo TAB.TAB.TAB.'<div class="raid_film">'.NL;
 			
 			// Start raid header
-			echo TAB.TAB.TAB.TAB.'<div class="raid_head'.($complete_hc ? " hc" : "").'">';
+			echo TAB.TAB.TAB.TAB.'<div class="raid_head'.($complete_myth ? " myth" : ($complete_hc ? " hc" : "")).'">';
 
 			if($complete && $instance["guild"] != "" && $instance[$raid['tag']."_time"] != "")
 				printf(WOWPROGRESS_ACHI, $raid['achievement'], $instance["guild"], $instance[$raid['tag']."_time"], $raid['name']);
@@ -122,7 +124,25 @@ class wowprogress_widget extends WP_Widget {
 
 			// Output each boss
 			foreach($raid['bosses'] as $bossid => $boss){
-                echo TAB.TAB.TAB.TAB.TAB.'<li'.($instance[$raid['tag']."_".$bossid] == "on" ? ($instance[$raid['tag']."_".$bossid."_hc"] == "on" ? ' class="down hc"' : ' class="down"') : "").'>';
+                $css_class = Array();
+                $n = $instance[$raid['tag']."_".$bossid] == "on";
+                $hc = $instance[$raid['tag']."_".$bossid."_hc"] == "on";
+                $myth = $instance[$raid['tag']."_".$bossid."_myth"] == "on";
+
+                if($n || $hc || $myth){
+                    $css_class[] = "down";
+                }
+                if($myth)
+                    $css_class[] = "myth";
+                elseif($hc)
+                    $css_class[] = "hc";
+
+                if(count($css_class) > 0)
+                    $css_class = join(" ", $css_class);
+                else
+                    $css_class = false;
+
+                echo TAB.TAB.TAB.TAB.TAB.'<li'.($css_class ? ' class="'.$css_class.'"' : '').'>';
                 echo $boss;
                 if($instance[$raid['tag']."_".$bossid."_vid"] != ""){
                     echo '<a class="video_link" href="'.$instance[$raid['tag']."_".$bossid."_vid"].'"><img src="'.WOWPROGRESS_VIDEO_ICON.'" /></a>';
@@ -161,9 +181,10 @@ class wowprogress_widget extends WP_Widget {
 			$instance[$raid['tag']."_expand"] = $new_instance[$raid['tag']."_expand"];
 
 			foreach ($raid['bosses'] as $boss_id => $bossname) {
-				$instance[$raid['tag']."_".$boss_id]        = $new_instance[$raid['tag'].'_'.$boss_id];
-				$instance[$raid['tag']."_".$boss_id."_hc"]  = $new_instance[$raid['tag']."_".$boss_id."_hc"];
-                $instance[$raid['tag']."_".$boss_id."_vid"] = $new_instance[$raid['tag'].'_'.$boss_id."_vid"];
+				$instance[$raid['tag']."_".$boss_id]         = $new_instance[$raid['tag'].'_'.$boss_id];
+				$instance[$raid['tag']."_".$boss_id."_hc"]   = $new_instance[$raid['tag']."_".$boss_id."_hc"];
+                $instance[$raid['tag']."_".$boss_id."_myth"] = $new_instance[$raid['tag']."_".$boss_id."_myth"];
+                $instance[$raid['tag']."_".$boss_id."_vid"]  = $new_instance[$raid['tag'].'_'.$boss_id."_vid"];
 			}
 		}
 
@@ -185,32 +206,32 @@ class wowprogress_widget extends WP_Widget {
 
         echo '<table>';
 
-		echo '<thead><tr><th colspan="3"></th></tr></thead>';
+		echo '<thead><tr><th colspan="4"></th></tr></thead>';
 
 		echo '<tbody>';
 		echo $this->form_text_input("title", __("Title", "wowprogress"), esc_attr($instance['title']));
 		echo $this->form_text_input("guild", __("Guild", "wowprogress"), esc_attr($instance['guild']), __("Name of your guild.\nThis will be used in achievement link.", "wowprogress"));
-		echo '<tr><td colspan="3"><hr /></td></tr>';
+		echo '<tr><td colspan="4"><hr /></td></tr>';
 		echo '</tbody>';
 
 		foreach ($this->WoWraids as $raid) {
             if(!isset($options['show_raid'][$raid['tag']]) || $options['show_raid'][$raid['tag']] != '1') continue;
 
-			echo '<thead><tr><th colspan="3">'.$raid['name'].'</th></tr></thead>';
+			echo '<thead><tr><th colspan="4">'.$raid['name'].'</th></tr></thead>';
 
 			echo '<tbody>';
 			echo $this->form_checkbox_input($raid['tag']."_show", __("Show", "wowprogress"), $instance[$raid['tag']."_show"]);
 			echo $this->form_checkbox_input($raid['tag']."_expand", __("Open", "wowprogress"), $instance[$raid['tag']."_expand"]);
 			echo '</tbody>';
 
-			echo '<thead><tr><th>N</th><th>HC</th><th>Boss</th></tr></thead>';
+			echo '<thead><tr><th>N</th><th>HC</th><th>MH</th><th>Boss</th></tr></thead>';
 			echo '<tbody>';
 
 			foreach ($raid['bosses'] as $boss_id => $boss_name)
 				echo $this->form_boss($raid['tag']."_".$boss_id, $boss_name, $instance);
 
 			echo $this->form_text_input($raid['tag']."_time", __("Time", "wowprogress"), $instance[$raid['tag']."_time"], __("Time when guild achieved guild run achievement.\nShould be in unix micro time (ei. 1304035200000).", "wowprogress"));
-			echo '<tr><td colspan="3"><hr /></td></tr>';
+			echo '<tr><td colspan="4"><hr /></td></tr>';
 
 			echo '</tbody>';
 		}
@@ -234,7 +255,7 @@ class wowprogress_widget extends WP_Widget {
 		$res .= '<tr>';
 		$res .= '<td></td>';
 		$res .= '<td>'.$this->form_checkbox($id, $state).'</td>';
-		$res .= '<td>'.$this->form_label($id, $label).'</td>';
+		$res .= '<td colspan="2">'.$this->form_label($id, $label).'</td>';
 		$res .= '</tr>';
 		return $res;
 	}
@@ -242,7 +263,7 @@ class wowprogress_widget extends WP_Widget {
 	function form_text_input($id, $label, $value, $title = ""){
 		$res = "";
 		$res .= '<tr>';
-		$res .= '<td colspan="2">'.$this->form_label($id, $label).'</td>';
+		$res .= '<td colspan="3">'.$this->form_label($id, $label).'</td>';
 		$res .= '<td>'.$this->form_text($id, $value, $title).'</td>';
 		$res .= '</tr>';
 		return $res;
@@ -252,18 +273,20 @@ class wowprogress_widget extends WP_Widget {
         $res = "";
         $res .= '<tr>';
         $res .= '<td>'.$this->form_label($id, $label).'</td>';
-        $res .= '<td colspan="2">'.$this->form_text($id, $value, $title).'</td>';
+        $res .= '<td colspan="3">'.$this->form_text($id, $value, $title).'</td>';
         $res .= '</tr>';
         return $res;
     }
 
     function form_boss($boss_id, $boss_name, $instance){
 		$boss_id_hc = $boss_id."_hc";
+        $boss_id_myth = $boss_id."_myth";
 
 		$res = "";
 		$res .= '<tr>';
 		$res .= '<td>'.$this->form_checkbox($boss_id, $instance[$boss_id]).'</td>';
 		$res .= '<td>'.$this->form_checkbox($boss_id_hc, $instance[$boss_id_hc]).'</td>';
+        $res .= '<td>'.$this->form_checkbox($boss_id_myth, $instance[$boss_id_myth]).'</td>';
 		$res .= '<td>'.$this->form_label($boss_id, $boss_name).'</td>';
 		$res .= '</tr>';
         $res .= $this->form_link_input($boss_id.'_vid', '<img style="vertical-align: middle" src="'.WOWPROGRESS_VIDEO_ICON.'"/>', $instance[$boss_id."_vid"], __("URL to video.", "wowprogress"));

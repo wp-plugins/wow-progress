@@ -1,5 +1,40 @@
 [
     {
+        "achievement" : 9416,
+        "background" : "hm",
+        "bosses" : [
+            "Kargath Bladefist",
+            "The Butcher",
+            "Tectus",
+            "Brackenspore",
+            "Twin Ogron",
+            "Ko'ragh",
+            "Imperator Mar'gok"
+        ],
+        "exp" : "warlords_of_draenor",
+        "name" : "Highmaul",
+        "tag" : "hm"
+    },
+    {
+        "achievement" : 9417,
+        "background" : "bf",
+        "bosses" : [
+            "Gruul",
+            "Oregorger",
+            "Beastlord Darmac",
+            "Flamebender Ka'graz",
+            "Hans'gar and Franzok",
+            "Operator Thogar",
+            "The Blast Furnace",
+            "Kromog",
+            "The Iron Maidens",
+            "Blackhand"
+        ],
+        "exp" : "warlords_of_draenor",
+        "name" : "Blackrock Foundry",
+        "tag" : "bf"
+    },
+    {
         "achievement" : 8510,
         "background" : "soo",
         "bosses" : [
