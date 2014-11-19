@@ -3,7 +3,7 @@ Contributors: martinek
 Tags: wow, warcraft, world of warcraft, guild, progress, widget, raid, boss
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ You can either replace image of raid in `/images/raids/` folder, or you can uplo
 4. Administration
 
 == Changelog ==
+
+= 1.4.1 =
+* fixed problem with url file access
 
 = 1.4.0 =
 * added mythic difficulty

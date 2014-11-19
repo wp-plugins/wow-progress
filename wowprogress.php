@@ -3,7 +3,7 @@
  * Plugin Name: WoW Progress
  * Description: A widget that helps to display guild raid progress.
  * Author: freevision.sk
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author URI: http://www.freevision.sk
  * Text Domain: wowprogress
  */
@@ -23,7 +23,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see http://www.gnu.org/licenses/.
  */
-define( 'WOWPROGRESS_VERSION', '1.1.0' );
+define( 'WOWPROGRESS_VERSION', '1.4.1' );
 if ( ! defined( 'WOWPROGRESS_PLUGIN_SLUG' ) )	define( 'WOWPROGRESS_PLUGIN_SLUG',	'wowprogress');
 if ( ! defined( 'WOWPROGRESS_PLUGIN_NAME' ) )	define( 'WOWPROGRESS_PLUGIN_NAME',	'WoW Progress');
 if ( ! defined( 'WOWPROGRESS_PLUGIN_DIR' ) )	define( 'WOWPROGRESS_PLUGIN_DIR',	WP_PLUGIN_DIR . '/' . plugin_basename( dirname( __FILE__ ) ) );
@@ -31,7 +31,7 @@ if ( ! defined( 'WOWPROGRESS_PLUGIN_URL' ) )	define( 'WOWPROGRESS_PLUGIN_URL',	W
 
 if ( ! defined( 'WOWPROGRESS_THEMES_FOLDER' ) )	define( 'WOWPROGRESS_THEMES_FOLDER','themes' );
 
-if ( ! defined( 'WOWPROGRESS_RAIDS_FILE' ) )	define( 'WOWPROGRESS_RAIDS_FILE',	WOWPROGRESS_PLUGIN_URL.'/raids.json' );
+if ( ! defined( 'WOWPROGRESS_RAIDS_FILE' ) )	define( 'WOWPROGRESS_RAIDS_FILE',	WOWPROGRESS_PLUGIN_DIR.'/raids.json' );
 if ( ! defined( 'WOWPROGRESS_EXPANSIONS' ) )	define( 'WOWPROGRESS_EXPANSIONS',	WOWPROGRESS_PLUGIN_URL.'/images/exp/%s.png' );
 if ( ! defined( 'WOWPROGRESS_RAIDS' ) )			define( 'WOWPROGRESS_RAIDS',		WOWPROGRESS_PLUGIN_URL.'/images/raids/%s.png' );
 if ( ! defined( 'WOWPROGRESS_HC_ICON' ) )		define( 'WOWPROGRESS_HC_ICON',		WOWPROGRESS_PLUGIN_URL.'/images/heroic_icon.png' );
