@@ -2,8 +2,8 @@
 Contributors: martinek
 Tags: wow, warcraft, world of warcraft, guild, progress, widget, raid, boss
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.4.1
+Tested up to: 4.2.2
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,14 +12,14 @@ A widget that helps to display guild raid progress.
 == Description ==
 
 A widget that helps to display guild raid progress.
-Each boss have separate option to toggle kill, heroic kill and mythic kill. Contains raids from Tier 11 up to Tier 17 (patch 6.0.2). Each raid can be toggled to be displayed and if shown or collapsed.
+Each boss have separate option to toggle kill, heroic kill and mythic kill. Contains raids from Tier 11 up to Tier 18 (patch 6.2.0). Each raid can be toggled to be displayed and if shown or collapsed.
 
 There is theme support with sample Light and Dark theme. Also my own theme is attached if you are interested. You should create your own theme and customise it to match your needs. 
 
 Progress can be configured in widget menu.
 Theme and backgrounds toggle is in Settings > WoW Progress menu.
 
-If you managed to find bugs or want to correct some of my codes, please don't hesitate to leave a comment or contact me on montas@freevision.sk.
+If you managed to find bugs or want to correct some of my codes, please don't hesitate to leave a comment or contact me on martinek@freevision.sk.
 
 == Installation ==
 
@@ -46,12 +46,15 @@ You can either replace image of raid in `/images/raids/` folder, or you can uplo
 
 == Changelog ==
 
+= 1.5.0 =
+* Added Hellfire Citadel raid (patch 6.2.0)
+
 = 1.4.1 =
 * fixed problem with url file access
 
 = 1.4.0 =
 * added mythic difficulty
-* added Highmaul nad Blackrock Foundry raids (path 6.0.2)
+* added Highmaul nad Blackrock Foundry raids (patch 6.0.2)
 
 = 1.3.0 =
 * added global setting to disable raids. You might have to go to settings and enable only raids you want.
