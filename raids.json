@@ -1,19 +1,25 @@
 [
     {
-        "achievement" : 9416,
-        "background" : "hm",
+        "achievement" : false,
+        "background" : "hfc",
         "bosses" : [
-            "Kargath Bladefist",
-            "The Butcher",
-            "Tectus",
-            "Brackenspore",
-            "Twin Ogron",
-            "Ko'ragh",
-            "Imperator Mar'gok"
+            "Hellfire Assault",
+            "Iron Reaver",
+            "Kormrok",
+            "Hellfire High Council",
+            "Kilrogg Deadeye",
+            "Gorefiend",
+            "Shadow-Lord Iskar",
+            "Socrethar the Eternal",
+            "Fel Lord Zakuun",
+            "Xhul'horac",
+            "Tyrant Velhari",
+            "Mannoroth",
+            "Archimonde"
         ],
         "exp" : "warlords_of_draenor",
-        "name" : "Highmaul",
-        "tag" : "hm"
+        "name" : "Hellfire Citadel",
+        "tag" : "hfc"
     },
     {
         "achievement" : 9417,
@@ -33,6 +39,22 @@
         "exp" : "warlords_of_draenor",
         "name" : "Blackrock Foundry",
         "tag" : "bf"
+    },
+    {
+        "achievement" : 9416,
+        "background" : "hm",
+        "bosses" : [
+            "Kargath Bladefist",
+            "The Butcher",
+            "Tectus",
+            "Brackenspore",
+            "Twin Ogron",
+            "Ko'ragh",
+            "Imperator Mar'gok"
+        ],
+        "exp" : "warlords_of_draenor",
+        "name" : "Highmaul",
+        "tag" : "hm"
     },
     {
         "achievement" : 8510,

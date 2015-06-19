@@ -111,7 +111,7 @@ class wowprogress_widget extends WP_Widget {
 			// Start raid header
 			echo TAB.TAB.TAB.TAB.'<div class="raid_head'.($complete_myth ? " myth" : ($complete_hc ? " hc" : "")).'">';
 
-			if($complete && $instance["guild"] != "" && $instance[$raid['tag']."_time"] != "")
+			if($raid['achievement'] && $complete && $instance["guild"] != "" && $instance[$raid['tag']."_time"] != "")
 				printf(WOWPROGRESS_ACHI, $raid['achievement'], $instance["guild"], $instance[$raid['tag']."_time"], $raid['name']);
 			else
 				echo $raid['name'];
@@ -230,7 +230,10 @@ class wowprogress_widget extends WP_Widget {
 			foreach ($raid['bosses'] as $boss_id => $boss_name)
 				echo $this->form_boss($raid['tag']."_".$boss_id, $boss_name, $instance);
 
-			echo $this->form_text_input($raid['tag']."_time", __("Time", "wowprogress"), $instance[$raid['tag']."_time"], __("Time when guild achieved guild run achievement.\nShould be in unix micro time (ei. 1304035200000).", "wowprogress"));
+            if($raid['achievement']) {
+                echo $this->form_text_input($raid['tag']."_time", __("Time", "wowprogress"), $instance[$raid['tag']."_time"], __("Time when guild achieved guild run achievement.\nShould be in unix micro time (ei. 1304035200000).", "wowprogress"));
+            }
+
 			echo '<tr><td colspan="4"><hr /></td></tr>';
 
 			echo '</tbody>';
